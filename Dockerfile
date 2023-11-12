@@ -14,10 +14,10 @@ ARG FREEDNS_URL
 ENV FREEDNS_URL=$FREEDNS_URL
 
 # Add your update script to the container
-COPY update_freedns.sh .
+COPY updater.sh .
 
 # Make the script executable
-RUN chmod +x update_freedns.sh
+RUN chmod +x updater.sh
 
 # Command to run the script
-CMD ["./update_freedns.sh"]
+CMD ["./updater.sh"]
