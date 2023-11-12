@@ -1,11 +1,13 @@
-# Use a lightweight base image
-FROM alpine:latest
+# Use a minimal Ubuntu base image
+FROM ubuntu:latest
 
 # Set the working directory
 WORKDIR /app
 
-# Install wget
-RUN apk --no-cache add wget
+# Install wget (and ca-certificates for HTTPS support)
+RUN apt-get update && \
+    apt-get install -y wget ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
 
 # Define build-time argument for FreeDNS URL
 ARG FREEDNS_URL
